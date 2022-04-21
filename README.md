@@ -10,7 +10,7 @@ In this project, we are building a website for interaction with the API from our
 
 
 
-## My APIs
+## APIs
 
 ### Authentication Module
 
