@@ -35,13 +35,18 @@ let user = {
     password: "zero"
 }
 
+const API = 'https://rickandmortyapi.com/api/character/1'
+
 async function login() {
-  console.log("hi")
-  let res = await fetch("http://127.0.0.1:5000/authenticate", {
-    method: 'GET',
-    body: JSON.stringify(user)
-        }
-    );
+  console.log("hey")
+  let res = await fetch(API, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+      }
+  );
   let data = await res.json();
   console.log("hello")
   return data;
@@ -49,7 +54,19 @@ async function login() {
 
 myButton.addEventListener("click", (evt) => {
   console.log("CLICKED");
-  login().then(data => console.log("data is", data));
+  fetch.fetch(API, {
+    method : "GET",
+    headers : {'Content-Type': 'application/json'}
+  })
+      .then( response => {
+        return response.json()
+      })
+      .then( data => {
+        console.log(data)
+      })
+      .catch ((err) => {
+        console.error(err)
+      })
 })
 
 if (Accelerometer) {

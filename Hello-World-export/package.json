@@ -23,5 +23,8 @@
       }
     },
     "defaultLanguage": "en-US"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.7"
   }
 }
