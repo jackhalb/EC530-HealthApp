@@ -1,10 +1,23 @@
 <script>
-    let name = 'user'
+    import router from "page"
+
+    let username = '';
+    let password = '';
+
+    function login() {
+        
+
+
+        router('/home')
+    }
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p><a href="http://localhost:8080/register">Create an account</a></p>
+	<h1>Hello user! Please login.</h1>
+    <input bind:value={username} placeholder="username">
+    <input bind:value={password} placeholder="password" type="password">
+    <button on:click|once={login}>Login</button>
+	<p>Don't have an account? Create one <a href="http://localhost:8080/register">here</a>.</p>
 </main>
 
 <style>
@@ -16,9 +29,9 @@
 	}
 
 	h1 {
-		color: #ff3e00;
+		color: #1261a0;
 		text-transform: uppercase;
-		font-size: 4em;
+		font-size: 3em;
 		font-weight: 100;
 	}
 
