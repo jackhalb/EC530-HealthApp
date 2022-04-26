@@ -18,6 +18,8 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "fetch": "^1.1.0",
+    "node-fetch": "^3.2.3",
     "page": "^1.11.6",
     "sirv-cli": "^2.0.0"
   }
