@@ -1,12 +1,14 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS, cross_origin
 import pymongo
 import device_module
 import messaging_module as msg
 
 app = Flask(__name__)
+CORS(app)
 
 client = pymongo.MongoClient(
-    "mongodb+srv://Github:Github@cluster0.pkk8t.mongodb.net/Test1?retryWrites=true&w=majority")
+    "mongodb+srv://Github:github@cluster0.pkk8t.mongodb.net/Test1?retryWrites=true&w=majority")
 
 db = client["Test1"]
 devices = db["Devices"]
@@ -25,24 +27,42 @@ def add_new_user():
         return jsonify(str("Successfully added  " + str(user)))
 
 
-@app.route("/find-user", methods=["GET"])
+@app.route("/find-user", methods=["POST"])
 def find_user():
     target = request.get_json()
     username = target['username']
     existing_name = users.find_one({'username': username})
-    existing_name['_id'] = str(existing_name['_id'])
+    if existing_name == None:
+        return {
+            'message': "User does not exist.",
+            'exists': False,
+            'ok': True
+        }, 404
+    else:
+        existing_name['_id'] = str(existing_name['_id'])
+    
     return existing_name
 
 
-@app.route("/authenticate", methods=["GET"])
+@app.route("/authenticate", methods=["POST"])
 def find():
+    print(request)
     target = request.get_json()
+    print('line 44')
+    print(target)
     username = target['name']
     password = target['password']
     existing_name = users.find_one(
         {'username': username,
          'password': password})
-    existing_name['_id'] = str(existing_name['_id'])
+    if existing_name == None:
+        return {
+            'message': "User does not exist.",
+            'exists': False,
+            'ok': True
+        }, 404
+    else:
+        existing_name['_id'] = str(existing_name['_id'])
     return existing_name
 
 
