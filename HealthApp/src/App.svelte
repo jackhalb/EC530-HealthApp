@@ -5,12 +5,26 @@
 	import Register from '../components/Register.svelte'
 
 	let page;
+	let params;
 
 	router('/', () => page = Login)
 	router('/register', () => page = Register)
-	router('/home', () => page = Home)
+	router('/home/:name', (ctx, next) => {
+		params = ctx.params;
+		next()
+	}, () => page = Home)
 
 	router.start()
 </script>
 
-<svelte:component this={page} />
+{#if page === Home}
+	<Home {params} />
+{/if}
+
+{#if page === Login}
+	<Login />
+{/if}
+
+{#if page === Register}
+	<Register />
+{/if}

@@ -1,5 +1,10 @@
 <script>
-    let name = 'user'
+	import { onMount } from 'svelte'
+
+	export let params
+
+    let name = params.name
+	console.log(params);
 </script>
 
 <main>
@@ -16,9 +21,9 @@
 	}
 
 	h1 {
-		color: #ff3e00;
+		color: #1261a0;
 		text-transform: uppercase;
-		font-size: 4em;
+		font-size: 3em;
 		font-weight: 100;
 	}
 

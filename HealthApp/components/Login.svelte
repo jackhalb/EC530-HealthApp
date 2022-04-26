@@ -1,6 +1,5 @@
 <script>
     import router from "page"
-    //import fetch from "node-fetch"
 
     let username = '';
     let password = '';
@@ -28,7 +27,6 @@
             },
             body: JSON.stringify(name)
         });
-        console.log(existing_name)
         if (existing_name.status == 404)
         {
             username_exists = false;
@@ -40,20 +38,21 @@
             },
             body: JSON.stringify(user)
         });
-        console.log(existing_account)
         if (existing_account.status == 404)
         {
             incorrect_password = true;
         }
         if (username_exists && !incorrect_password)
         {
-            router('/home');
+            let data = await existing_account.json()
+            let name = data.username;
+            router('/home/' + name);
         }
     }
 </script>
 
 <main>
-	<h1>Hello user! Please login.</h1>
+	<h1>Login</h1>
     <input bind:value={username} placeholder="username">
     <input bind:value={password} placeholder="password" type="password">
     <button on:click={login}>Login</button>
