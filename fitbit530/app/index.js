@@ -31,10 +31,7 @@ const orientationData = document.getElementById("orientation-data");
 const sensors = [];
 
 const myButton = document.getElementById("button-1");
-
-messaging.peerSocket.addEventListener("open", (evt) => {
-    sendMessage();
-});
+myButton.text = "CONNECT";
 
 messaging.peerSocket.addEventListener("error", (err) => {
     console.error(`Connection error: ${err.code} - ${err.message}`);
