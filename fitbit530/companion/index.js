@@ -24,9 +24,30 @@ function doThis() {
     console.log("Wake interval happened!");
 }
 
+function sendMessage(data) {
+    if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
+        // Send the data to peer as a message
+        messaging.peerSocket.send(data);
+    }
+}
+
 messaging.peerSocket.addEventListener("message", (evt) => {
-    console.log(JSON.stringify(evt.data));
-    login().then(r => console.log(r))
+    let received = JSON.stringify(evt.data)
+    if (received === "\"CONNECT\"") {
+        login().then(r => {
+            console.log(r)
+            if (r[1] === 200) {
+                sendMessage("LOGGED IN")
+            }
+            else {
+                console.log(r[1])
+            }
+
+        })
+    }
+    else {
+        console.log(received)
+    }
 });
 
 console.log(typeof settingsStorage.getItem("username"))
@@ -47,5 +68,5 @@ async function login() {
         }
     );
     let data = await res.json();
-    return data;
+    return [data, res.status];
 }

@@ -33,17 +33,23 @@ const sensors = [];
 const myButton = document.getElementById("button-1");
 myButton.text = "CONNECT";
 
-messaging.peerSocket.addEventListener("error", (err) => {
-    console.error(`Connection error: ${err.code} - ${err.message}`);
-});
+messaging.peerSocket.addEventListener("message", (evt) => {
+    // console.error(`Connection error: ${err.code} - ${err.message}`);
+    let received = JSON.stringify(evt.data)
+    console.log(received)
+    if (received === "\"LOGGED IN\"") {
+        myButton.text = "UPLOAD"
+    }
+})
 
 function sendMessage() {
     // Sample data
-    const data = {
-        title: 'My test data',
-        isTest: true,
-        records: [1, 2, 3, 4]
-    }
+    // const data = {
+    //     title: 'My test data',
+    //     isTest: true,
+    //     records: [1, 2, 3, 4]
+    // }
+    const data = 'CONNECT'
     if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
         // Send the data to peer as a message
         messaging.peerSocket.send(data);
