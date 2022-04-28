@@ -4,7 +4,7 @@
 
 <main>
 	<h1>Hello {name}!</h1>
-	<p><a href="http://localhost:8080/home">Home</a></p>
+	<p><a href="http://localhost:8080/">Login</a></p>
 </main>
 
 <style>
