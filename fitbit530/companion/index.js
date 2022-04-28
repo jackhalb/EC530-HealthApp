@@ -32,17 +32,26 @@ function sendMessage(data) {
 }
 
 messaging.peerSocket.addEventListener("message", (evt) => {
-    let received = JSON.stringify(evt.data)
-    if (received === "\"CONNECT\"") {
+    // let received = JSON.stringify(evt.data)
+    let received = evt.data
+    if (received[0] === "CONNECT") {
         login().then(r => {
             console.log(r)
             if (r[1] === 200) {
-                sendMessage("LOGGED IN")
+                sendMessage(["LOGGED IN", JSON.parse(settingsStorage.getItem("username")).name])
             }
             else {
                 console.log(r[1])
             }
 
+        })
+    }
+    else if (received[0] === "UPLOAD") {
+        post_reading(received[1]).then(r => {
+            console.log(r)
+            if (r[1] === 200) {
+                sendMessage(["UPLOADED"])
+            }
         })
     }
     else {
@@ -52,14 +61,15 @@ messaging.peerSocket.addEventListener("message", (evt) => {
 
 console.log(typeof settingsStorage.getItem("username"))
 
-const API = 'http://127.0.0.1:5000/authenticate'
+const auth = 'http://127.0.0.1:5000/authenticate'
+const create_reading = 'http://127.0.0.1:5000/new-reading'
 
 async function login() {
     let user = {
         name: JSON.parse(settingsStorage.getItem("username")).name,
         password: JSON.parse(settingsStorage.getItem("password")).name
     }
-    let res = await fetch(API, {
+    let res = await fetch(auth, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -69,4 +79,23 @@ async function login() {
     );
     let data = await res.json();
     return [data, res.status];
+}
+
+async function post_reading(data) {
+    let health_reading = {
+        "heart_rate": data
+    }
+    let health_item = {
+        name: JSON.parse(settingsStorage.getItem("username")).name,
+        health_reading: health_reading
+    }
+    let res = await fetch(create_reading, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(health_item)
+        }
+    );
+    return [await res.json(), res.status]
 }
