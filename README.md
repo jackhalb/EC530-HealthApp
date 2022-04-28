@@ -11,16 +11,16 @@ In this project, we are building a website for interaction with the API from our
 ## Screenshots
 
 ### Login
-![Alt text](./images/login.png?raw=true "Login")
+![Alt text](./Images/login.png?raw=true "Login")
 
 ## Incorrect Username
-![Alt text](./images/incorrect_username.png?raw=true "incorrect1")
+![Alt text](./Images/incorrect_username.png?raw=true "incorrect1")
 
 ## Incorrect Password
-![Alt text](./images/incorrect_password.png?raw=true "incorrect2")
+![Alt text](./Images/incorrect_password.png?raw=true "incorrect2")
 
 ## Home (with user data passed)
-![Alt text](./images/home.png?raw=true "Home")
+![Alt text](./Images/home.png?raw=true "Home")
 
 ## APIs
 
