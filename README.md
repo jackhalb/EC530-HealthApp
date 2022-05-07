@@ -13,19 +13,19 @@ In this project, we are building a website for interaction with the API from our
 ### Fitbit App
 
 ## Companion Smartphone Application
-![Alt text](./Images/fitbit_companion_app.png?raw=true "Fitbit Companion App")
+![Alt text](./Images/fitbit_companion_app.png?raw=true "Fitbit Companion App")  
 We can see here that you need to download hte companion application to enter your username and password, since the Fitbit itself does not have a keyboard or other input method. 
 
 ## Fitbit App Login Screen
-![Alt text](./Images/fitbit_login_screen.png?raw=true "Fitbit Login Screen")
+![Alt text](./Images/fitbit_login_screen.png?raw=true "Fitbit Login Screen")  
 Here is the login screen for the fitbit application. Once you press this button, the application uses peer-to-peer communication with teh companion application, asking it to query the authentication API from our flask server. If successfully queried, the companion application will send back the username to display. 
 
 ## Fitbit App Logged-in Screen
-![Alt text](./Images/fitbit_logged_in.png?raw=true "Fitbit Logged-in Screen")
+![Alt text](./Images/fitbit_logged_in.png?raw=true "Fitbit Logged-in Screen")  
 Here, the application has successfully queried the authentication API and you can now see your username displayed in the Fitbit application. The button now will upload the data taken by the fitbit to your account on the flask server back-end
 
 ## Fitbit Success Screen
-![Alt text](./Images/fitbit_data_sent.png?raw=true "Fitbit Data Sent")
+![Alt text](./Images/fitbit_data_sent.png?raw=true "Fitbit Data Sent")  
 When the button reads "SUCCESS" this means you have successfully sent your health data to our back-end. This data can be viewed on our Svelte front-end (more info below). Currently, only a heart-rate is sent as the Fitbit simulator does not have a full suite of sensors as a real Fitbit would, however, this can easily be changed in the future due to the modularity of our application. 
 
 ### Login
