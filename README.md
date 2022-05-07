@@ -8,7 +8,19 @@ In this project, we are building a website for interaction with the API from our
 2. Booking appointments: Patients can book appointments with their assigned doctor(s), and this event will show up in both the patient and doctor's calendar through the website.
 3. FitBit connectivity: We also wish to add FitBit data reading to our website, so that if the user has a FitBit they can add data such as their heartbeat, temperature, etc. to the app. This data will be linked to the user.
 
+## Screenshots
 
+### Login
+![Alt text](./Images/login.png?raw=true "Login")
+
+## Incorrect Username
+![Alt text](./Images/incorrect_username.png?raw=true "incorrect1")
+
+## Incorrect Password
+![Alt text](./Images/incorrect_password.png?raw=true "incorrect2")
+
+## Home (with user data passed)
+![Alt text](./Images/home.png?raw=true "Home")
 
 ## APIs
 
