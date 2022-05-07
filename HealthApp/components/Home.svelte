@@ -3,12 +3,12 @@
 
 	export let params
 
-    let name = params.name
-	console.log(params);
+    let data = params.data
+	console.log(data);
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
+	<h1>Hello user!</h1>
 	<p><a href="http://localhost:8080/">Logout</a></p>
 </main>
 

@@ -9,7 +9,7 @@
 
 	router('/', () => page = Login)
 	router('/register', () => page = Register)
-	router('/home/:name', (ctx, next) => {
+	router('/home/:data', (ctx, next) => {
 		params = ctx.params;
 		next()
 	}, () => page = Home)

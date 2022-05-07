@@ -19,6 +19,7 @@ convs = db["Conversations"]
 # AUTHENTICATION MODULE
 
 @app.route("/add-new-user", methods=["POST"])
+@cross_origin()
 def add_new_user():
     if request.method == 'POST':
         posted_data = request.get_json()
@@ -28,23 +29,27 @@ def add_new_user():
 
 
 @app.route("/find-user", methods=["POST"])
+@cross_origin()
 def find_user():
     target = request.get_json()
     username = target['username']
     existing_name = users.find_one({'username': username})
+    temp_headers = {'Access-Control-Allow-Origin': '*'}
     if existing_name == None:
         return {
             'message': "User does not exist.",
             'exists': False,
-            'ok': True
+            'headers': temp_headers
         }, 404
     else:
         existing_name['_id'] = str(existing_name['_id'])
+        existing_name['headers'] = temp_headers
     
     return existing_name
 
 
 @app.route("/authenticate", methods=["POST"])
+@cross_origin()
 def find():
     print(request)
     target = request.get_json()
@@ -55,14 +60,17 @@ def find():
     existing_name = users.find_one(
         {'username': username,
          'password': password})
+    temp_headers = {'Access-Control-Allow-Origin': '*'}
     if existing_name == None:
         return {
             'message': "User does not exist.",
             'exists': False,
-            'ok': True
+            'headers': temp_headers
         }, 404
     else:
         existing_name['_id'] = str(existing_name['_id'])
+        existing_name['headers'] = temp_headers
+
     return existing_name
 
 
