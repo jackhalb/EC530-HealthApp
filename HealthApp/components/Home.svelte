@@ -1,8 +1,28 @@
 <script>
 	export let params
+	import { onMount } from 'svelte'
 
-    let data = params.data
-	console.log('whee')
+	let data = []
+
+	onMount(async () => {
+		let cred = params.data
+		let name = {
+        	username: cred
+    	};
+		let user_data = await fetch('http://127.0.0.1:5000/find-user', {
+            	method: 'POST',
+            	headers: {
+            	    'Content-Type': 'application/json'
+            	},
+            	body: JSON.stringify(name)
+        	});
+		data = await user_data.json()
+		console.log(data)
+	});
+
+	// console.log(data)
+
+    
 </script>
 
 <main>

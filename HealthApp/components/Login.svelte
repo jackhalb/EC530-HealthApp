@@ -46,7 +46,8 @@
         if (username_exists && !incorrect_password)
         {
             let data = await existing_account.json()
-            router('/home/' + data);
+            // console.log(string)
+            router('/home/' + data['username']);
         }
     }
 </script>
