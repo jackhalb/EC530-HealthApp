@@ -1,10 +1,8 @@
 <script>
-	import { onMount } from 'svelte'
-
 	export let params
 
     let data = params.data
-	console.log(data);
+	console.log('whee')
 </script>
 
 <main>

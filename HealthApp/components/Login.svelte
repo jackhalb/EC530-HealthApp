@@ -28,7 +28,6 @@
             body: JSON.stringify(name)
         });
         let test = await existing_name.json()
-        console.log(test)
         if (existing_name.status == 404)
         {
             username_exists = false;

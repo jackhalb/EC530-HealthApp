@@ -28,50 +28,57 @@ def add_new_user():
         return jsonify(str("Successfully added  " + str(user)))
 
 
-@app.route("/find-user", methods=["POST"])
+@app.route("/find-user", methods=["POST", "OPTIONS"])
 @cross_origin()
 def find_user():
-    target = request.get_json()
-    username = target['username']
-    existing_name = users.find_one({'username': username})
     temp_headers = {'Access-Control-Allow-Origin': '*'}
-    if existing_name == None:
-        return {
-            'message': "User does not exist.",
-            'exists': False,
-            'headers': temp_headers
-        }, 404
+    if request.method == "OPTIONS":
+        response = Flask.Response(headers=temp_headers)
+        return response
     else:
-        existing_name['_id'] = str(existing_name['_id'])
-        existing_name['headers'] = temp_headers
+        target = request.get_json()
+        username = target['username']
+        existing_name = users.find_one({'username': username})
+        if existing_name == None:
+            return {
+                'message': "User does not exist.",
+                'exists': False,
+                'headers': temp_headers
+            }, 404
+        else:
+            existing_name['_id'] = str(existing_name['_id'])
+            existing_name['headers'] = temp_headers
     
-    return existing_name
+        return existing_name
+
+    
 
 
-@app.route("/authenticate", methods=["POST"])
+@app.route("/authenticate", methods=["POST", "OPTIONS"])
 @cross_origin()
 def find():
-    print(request)
-    target = request.get_json()
-    print('line 44')
-    print(target)
-    username = target['name']
-    password = target['password']
-    existing_name = users.find_one(
-        {'username': username,
-         'password': password})
     temp_headers = {'Access-Control-Allow-Origin': '*'}
-    if existing_name == None:
-        return {
-            'message': "User does not exist.",
-            'exists': False,
-            'headers': temp_headers
-        }, 404
+    if request.method == "OPTIONS":
+        response = Flask.Response(headers=temp_headers)
+        return response
     else:
-        existing_name['_id'] = str(existing_name['_id'])
-        existing_name['headers'] = temp_headers
+        target = request.get_json()
+        username = target['name']
+        password = target['password']
+        existing_name = users.find_one(
+            {'username': username,
+             'password': password})
+        if existing_name == None:
+            return {
+                'message': "User does not exist.",
+                'exists': False,
+                'headers': temp_headers
+            }, 404
+        else:
+            existing_name['_id'] = str(existing_name['_id'])
+            existing_name['headers'] = temp_headers
 
-    return existing_name
+        return existing_name
 
 
 # DEVICE MODULE
