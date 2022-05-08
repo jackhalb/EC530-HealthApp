@@ -27,6 +27,8 @@
             },
             body: JSON.stringify(name)
         });
+        let test = await existing_name.json()
+        console.log(test)
         if (existing_name.status == 404)
         {
             username_exists = false;
@@ -45,8 +47,7 @@
         if (username_exists && !incorrect_password)
         {
             let data = await existing_account.json()
-            let name = data.username;
-            router('/home/' + name);
+            router('/home/' + data);
         }
     }
 </script>
