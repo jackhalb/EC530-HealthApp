@@ -18,14 +18,22 @@ convs = db["Conversations"]
 
 # AUTHENTICATION MODULE
 
-@app.route("/add-new-user", methods=["POST"])
+@app.route("/add-new-user", methods=["POST", "OPTIONS"])
 @cross_origin()
 def add_new_user():
+    temp_headers = {'Access-Control-Allow-Origin': '*'}
     if request.method == 'POST':
         posted_data = request.get_json()
         user = posted_data['user_info']
         users.insert_one(user)
-        return jsonify(str("Successfully added  " + str(user)))
+        return {
+            'message': str("Successfully added  " + str(user)),
+            'headers': temp_headers
+        }, 200
+    else:
+        response = Flask.Response(headers=temp_headers)
+        return response
+
 
 
 @app.route("/find-user", methods=["POST", "OPTIONS"])

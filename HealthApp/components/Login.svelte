@@ -27,7 +27,6 @@
             },
             body: JSON.stringify(name)
         });
-        let test = await existing_name.json()
         if (existing_name.status == 404)
         {
             username_exists = false;
@@ -46,7 +45,6 @@
         if (username_exists && !incorrect_password)
         {
             let data = await existing_account.json()
-            // console.log(string)
             router('/home/' + data['username']);
         }
     }
