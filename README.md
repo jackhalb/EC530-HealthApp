@@ -5,9 +5,6 @@ In this project, we are building a website for interaction with the API from our
 
 In addition to this, we have a companion FitBit app which also interacts with the API. When used on the FitBit, this app allows the user to upload health data read by the FitBit (such as heart rate) and store it in the database. These readings can then be read on the Svelte web application as mentioned above.
 
-
-This will be a website where users can create an account as an administrator, medical professional or patient. Patients can upload health device readings to the app, make appointments with their assigned doctor, etc. to make their healthcare more easy and streamlined. The website will be built using Svelte which will make the app feel smooth and easy to use.
-
 ### Fitbit App
 
 ## Companion Smartphone Application
