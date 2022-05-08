@@ -1,15 +1,12 @@
 # EC530-HealthApp
 
 ## Overview
-In this project, we are building a website for interaction with the API from our previous project. The project consists of using the authenticate portion of the API to login the user successfully. The user is greeted by a Login page, where they can enter a username and password. If the user enters an incorrect username and/or password, the website will not log the user in nor access their data. If proper credentials are entered in the login screen, then the user will be navigated to the Home page, where that user can see all of their heath records by date added. In addition to this, we have a companion FitBit app which also interacts with the API. When used on the FitBit, this app allows the user to upload health data read by the FitBit (such as heart rate) and store it in the database. These readings can then be read on the Svelte web application as mentioned above.
+In this project, we are building a website for interaction with the API from our previous project. The project consists of using the authenticate portion of the API to login the user successfully. The user is greeted by a Login page, where they can enter a username and password. If the user enters an incorrect username and/or password, the website will not log the user in nor access their data. If proper credentials are entered in the login screen, then the user will be navigated to the Home page, where that user can see all of their heath records by date added. There is also a page for new users who wish to create a new account called registration. When navigating here, the user inputs their new username, password, reenters password, and selects their roles in their account. If the username is already taken, then the new account will not be created and an error shows. An error also shows if the passwords do not match.
+
+In addition to this, we have a companion FitBit app which also interacts with the API. When used on the FitBit, this app allows the user to upload health data read by the FitBit (such as heart rate) and store it in the database. These readings can then be read on the Svelte web application as mentioned above.
 
 
 This will be a website where users can create an account as an administrator, medical professional or patient. Patients can upload health device readings to the app, make appointments with their assigned doctor, etc. to make their healthcare more easy and streamlined. The website will be built using Svelte which will make the app feel smooth and easy to use.
-
-## Features
-1. Add administrator functionality: We want to make it such that users can be added only when an adminisrator approves, and same for removing of a user. This is to ensure that not just any user can create or delete users from the data base, but rather only verified admins can do so. An administrator should also have other functionalities such as creating new credentials for another user, deleting a user, or changing a user's credentials. 
-2. Booking appointments: Patients can book appointments with their assigned doctor(s), and this event will show up in both the patient and doctor's calendar through the website.
-3. FitBit connectivity: We also wish to add FitBit data reading to our website, so that if the user has a FitBit they can add data such as their heartbeat, temperature, etc. to the app. This data will be linked to the user.
 
 ### Fitbit App
 
@@ -43,8 +40,18 @@ Below are some screenshots of the web appliction in action; there is a login pag
 ## Incorrect Password
 ![Alt text](./Images/incorrect_password.png?raw=true "incorrect2")
 
+# Registration (with confirmation message displayed)
+![Alt text](./Images/register.png?raw=true "Register")
+
 ## Home (with user data displayed by date)
 ![Alt text](./Images/home.png?raw=true "Home")
+
+## Todos
+1. Add administrator functionality: We want to make it such that users can be added only when an adminisrator approves, and same for removing of a user. This is to ensure that not just any user can create or delete users from the data base, but rather only verified admins can do so. An administrator should also have other functionalities such as creating new credentials for another user, deleting a user, or changing a user's credentials. 
+2. Booking appointments: Patients can book appointments with their assigned doctor(s), and this event will show up in both the patient and doctor's calendar through the website.
+3. FitBit connectivity: We also wish to add FitBit data reading to our website, so that if the user has a FitBit they can add data such as their heartbeat, temperature, etc. to the app. This data will be linked to the user.
+4. Messaging: Make an interface for users to message their doctor, or vice-versa.
+5. Add data via the website: Currently, users can only add health records if they use the FitBit application; however, the user should be able to input their own health data on the website as well.
 
 ## APIs
 
