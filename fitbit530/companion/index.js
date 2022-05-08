@@ -82,7 +82,14 @@ async function login() {
 }
 
 async function post_reading(data) {
+    
+    let d = new Date();
+    let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(d);
+    let mo = new Intl.DateTimeFormat('en', { month: 'long' }).format(d);
+    let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(d);
+    let date = mo + " " + da + " " + ye
     let health_reading = {
+        "reading_date": date,
         "heart_rate": data
     }
     let health_item = {

@@ -24,5 +24,8 @@
   "scripts": {
     "build": "fitbit-build",
     "debug": "fitbit"
+  },
+  "dependencies": {
+    "intl": "^1.2.5"
   }
 }
