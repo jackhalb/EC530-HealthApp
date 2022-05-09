@@ -47,8 +47,10 @@ Below are some screenshots of the web appliction in action; there is a login pag
 1. Add administrator functionality: We want to make it such that users can be added only when an adminisrator approves, and same for removing of a user. This is to ensure that not just any user can create or delete users from the data base, but rather only verified admins can do so. An administrator should also have other functionalities such as creating new credentials for another user, deleting a user, or changing a user's credentials. 
 2. Booking appointments: Patients can book appointments with their assigned doctor(s), and this event will show up in both the patient and doctor's calendar through the website.
 3. FitBit connectivity: We also wish to add FitBit data reading to our website, so that if the user has a FitBit they can add data such as their heartbeat, temperature, etc. to the app. This data will be linked to the user.
-4. Messaging: Make an interface for users to message their doctor, or vice-versa.
-5. Add data via the website: Currently, users can only add health records if they use the FitBit application; however, the user should be able to input their own health data on the website as well.
+4. Updated device module: We would like to make it such taht if the user logs in from a new FitBit, it automatically registers itself in the device module with its MAC and device owner. 
+5. Messaging: Make an interface for users to message their doctor, or vice-versa.
+6. Add data via the website: Currently, users can only add health records if they use the FitBit application; however, the user should be able to input their own health data on the website as well.
+7. Security measures: Currently, our application is not very secure. The most important thing we need to add is a way for users' passwords to be secured. Other than that, we need to protect our database against injection attacks. I did some testing with very basic injection attacks, and the database was not affected, however, more extensive tests should be written. 
 
 ## APIs
 
